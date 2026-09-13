@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Sara Luccarelli — photography portfolio.">
 <title>Sara Luccarelli — Photography</title>
-<link rel="stylesheet" href="style.css?v=4">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 <header class="site-header">
@@ -58,13 +58,9 @@
       <p class="eyebrow">CONTACT</p>
       <h1>Get in touch.</h1>
     </div>
-    <form class="contact-form" onsubmit="return handleContact(event)">
-      <label>Name<input type="text" name="name"></label>
-      <label>Email<input type="email" name="email"></label>
-      <label>Message<textarea name="message"></textarea></label>
-      <button type="submit">SEND</button>
-      <p class="form-note">The email address can be connected when Sara's final contact details are available.</p>
-    </form>
+    <div class="contact-email">
+      <a href="mailto:hello@saraluccarelli.com">hello@saraluccarelli.com</a>
+    </div>
   </section>
 </main>
 
@@ -80,14 +76,7 @@
   </svg>
 </a>
 
-<script>
-function handleContact(e){
-  e.preventDefault();
-  alert("The contact form is ready visually. Sara's email address still needs to be connected.");
-  return false;
-}
-</script>
-<script src="portfolio.js?v=4"></script>
-<script src="script.js?v=4"></script>
+<script src="portfolio.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
