@@ -1,0 +1,103 @@
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#fafaf8;color:#2b2a28;font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;font-weight:300;letter-spacing:.02em}
+a{color:inherit}
+.site-header{position:sticky;top:0;z-index:20;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;background:rgba(250,250,248,.96);border-bottom:1px solid #dedbd5}
+.brand{color:#2b2a28;text-decoration:none;font-size:15px;letter-spacing:.045em;white-space:nowrap}
+.menu-toggle{border:0;background:none;color:#2b2a28;font:inherit;font-size:11px;letter-spacing:.12em;padding:10px 0;cursor:pointer}
+.mobile-menu{position:absolute;left:0;right:0;top:64px;background:#fafaf8;border-top:1px solid #dedbd5;border-bottom:1px solid #dedbd5;display:none;flex-direction:column;align-items:center;padding:18px 20px 28px;z-index:30}
+.mobile-menu.open{display:flex}
+.mobile-menu a{color:#77736d;text-decoration:none;font-size:13px;letter-spacing:.12em;padding:15px 0}
+.mobile-menu a:first-child{color:#2b2a28}
+main{width:90vw;max-width:1320px;margin:0 auto}
+.hero{width:100%;height:auto;min-height:0;overflow:hidden;background:#fafaf8}
+.hero img{width:100%;height:auto;object-fit:contain;display:block}
+.section{padding:76px 0}
+.about-section,.contact-section{display:grid;grid-template-columns:1fr;gap:38px;align-items:start}
+.about-image img{display:block;width:100%;height:auto;object-fit:contain}
+.about-copy{max-width:none}
+.eyebrow{margin:0 0 22px;font-size:10px;letter-spacing:.14em;color:#77736d}
+h1{margin:0 0 22px;font-size:38px;line-height:1.08;font-weight:300;letter-spacing:-.025em}
+.about-lead,.about-body{font-size:15px;line-height:1.7;margin:0 0 24px}
+.work-section{padding-top:24px}
+.section-heading{border-top:1px solid #dedbd5;padding-top:20px;margin-bottom:34px}
+.section-heading .eyebrow{margin:0}
+.section-note{margin:6px 0 0;color:#77736d;font-size:10px;letter-spacing:.08em}
+.work-grid{display:grid;grid-template-columns:1fr;gap:52px}
+.work-card{margin:0}
+.card-image{appearance:none;border:0;padding:0;background:none;width:100%;display:block;cursor:pointer}
+.card-image img{width:100%;height:auto;display:block}
+.work-card h2{margin:13px 0 0;font-size:11px;font-weight:400;letter-spacing:.12em}
+.contact-form label{display:block;margin:0 0 24px;font-size:10px;letter-spacing:.08em;color:#77736d}
+input,textarea{display:block;width:100%;margin-top:8px;padding:12px 0;border:0;border-bottom:1px solid #dedbd5;border-radius:0;background:transparent;color:#2b2a28;font:inherit;font-size:16px;outline:none}
+textarea{min-height:130px;resize:vertical}
+.contact-form>button{border:1px solid #2b2a28;background:#2b2a28;color:#fafaf8;padding:12px 22px;font:inherit;font-size:10px;letter-spacing:.12em}
+.form-note{font-size:11px;line-height:1.6;color:#77736d;max-width:420px}
+footer{display:flex;justify-content:space-between;width:90vw;margin:0 auto;padding:35px 0 calc(35px + env(safe-area-inset-bottom));font-size:9px;color:#77736d}
+.instagram-link{position:fixed;right:22px;bottom:calc(22px + env(safe-area-inset-bottom));z-index:50;width:58px;height:58px;border:1px solid #d7d4ce;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(250,250,248,.98);text-decoration:none;box-shadow:0 3px 14px rgba(0,0,0,.08)}
+.instagram-link svg{width:30px;height:30px}
+.lightbox{position:fixed;inset:0;z-index:100;background:rgba(20,20,18,.97);display:none;align-items:center;justify-content:center;padding:16px}
+.lightbox.open{display:flex}
+.lightbox figure{width:100%;height:100%;margin:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.lightbox figure img{display:block;max-width:92vw;max-height:calc(100svh - 105px);width:auto;height:auto;object-fit:contain}
+.lightbox figcaption{width:92vw;display:flex;justify-content:space-between;padding-top:10px;color:#fff;font-size:9px;letter-spacing:.08em}
+.lightbox-close,.lightbox-arrow{position:absolute;z-index:2;border:0;background:none;color:#fff;cursor:pointer}
+.lightbox-close{top:calc(10px + env(safe-area-inset-top));right:14px;font-size:32px;padding:8px}
+.lightbox-arrow{top:50%;font-size:26px;padding:18px 10px;transform:translateY(-50%)}
+.lightbox-arrow.prev{left:0}.lightbox-arrow.next{right:0}
+.lightbox-arrow.disabled{opacity:.2;pointer-events:none}
+@media(min-width:721px){
+ .site-header{height:82px;padding:0 7.5vw}.brand{font-size:clamp(20px,2vw,29px)}
+ .menu-toggle{display:none}
+ .mobile-menu{position:static;display:flex;flex-direction:row;align-items:center;padding:0;border:0;background:none;gap:clamp(18px,3vw,48px)}
+ .mobile-menu a{padding:0;font-size:13px;letter-spacing:.08em}
+ main{width:min(1320px,85vw)}.hero{height:calc(100vh - 82px);min-height:620px}
+ .section{padding:150px 0}.about-section,.contact-section{grid-template-columns:minmax(280px,1fr) minmax(280px,.8fr);gap:clamp(50px,9vw,150px);align-items:center}
+ .about-copy{max-width:430px}.work-grid{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:3.5vw;row-gap:90px}
+ footer{width:min(1320px,85vw)}
+}
+
+
+
+@media(max-width:720px){
+  .site-header{height:64px;position:sticky;top:0}
+  .hero{height:auto!important;min-height:0!important}
+  .hero img{height:auto!important;width:100%!important;object-fit:contain!important}
+  .menu-toggle{display:block}
+  .mobile-menu{top:64px}
+  .instagram-link{width:58px;height:58px;right:20px;bottom:calc(20px + env(safe-area-inset-bottom))}
+}
+
+
+
+.menu-check{position:absolute;opacity:0;pointer-events:none}
+.menu-toggle{display:block}
+.menu-toggle .menu-label,.menu-toggle .close-label{cursor:pointer}
+.menu-toggle .close-label{display:none}
+#menu-check:checked ~ .menu-toggle .menu-label{display:none}
+#menu-check:checked ~ .menu-toggle .close-label{display:inline}
+.mobile-menu{display:none}
+#menu-check:checked ~ .mobile-menu{display:flex}
+.css-lightbox{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;background:rgba(250,250,248,.98);padding:24px 64px}
+.css-lightbox:target{display:flex}
+.css-lightbox figure{margin:0;max-width:92vw;max-height:90vh;display:flex;flex-direction:column;align-items:center}
+.css-lightbox img{display:block;max-width:92vw;max-height:82vh;width:auto;height:auto;object-fit:contain}
+.css-lightbox figcaption{width:100%;margin-top:14px;display:flex;justify-content:space-between;gap:20px;font-size:10px;letter-spacing:.12em;text-transform:uppercase}
+.css-lightbox a{color:#2b2a28;text-decoration:none}
+.css-lightbox .lb-close,.css-lightbox .lb-prev,.css-lightbox .lb-next{position:fixed;z-index:101;display:flex;align-items:center;justify-content:center;color:#2b2a28;text-decoration:none;background:transparent}
+.css-lightbox .lb-close{top:16px;right:22px;font-size:30px;width:40px;height:40px}
+.css-lightbox .lb-prev,.css-lightbox .lb-next{top:50%;transform:translateY(-50%);font-size:30px;width:52px;height:72px}
+.css-lightbox .lb-prev{left:6px}.css-lightbox .lb-next{right:6px}
+.work-card .card-image{cursor:pointer;display:block;text-decoration:none;color:inherit}
+@media(max-width:720px){
+.css-lightbox{padding:24px 42px}
+.css-lightbox img{max-width:calc(100vw - 42px);max-height:78vh}
+.css-lightbox figcaption{font-size:9px}
+.css-lightbox .lb-prev,.css-lightbox .lb-next{font-size:25px;width:38px}
+.css-lightbox .lb-close{top:8px;right:10px}
+}
+
+
+/* Maintainable portfolio: cards and lightboxes are generated from portfolio.js */
+.work-grid{align-items:start}
