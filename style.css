@@ -47,14 +47,14 @@ footer{display:flex;justify-content:space-between;width:90vw;margin:0 auto;paddi
 .instagram-link svg{width:30px;height:30px}
 
 /* JavaScript lightbox. One viewer is used for all photos. */
-.lightbox{position:fixed;inset:0;z-index:1000;background:rgba(250,250,248,.985);display:none;align-items:center;justify-content:center;padding:20px 64px calc(20px + env(safe-area-inset-bottom));touch-action:none}
+.lightbox{position:fixed;inset:0;z-index:1000;background:rgba(250,250,248,.99);display:none;align-items:center;justify-content:center;padding:12px 54px calc(12px + env(safe-area-inset-bottom));touch-action:none}
 .lightbox.open{display:flex}
-.lightbox-stage{width:100%;height:100%;margin:0;display:flex;flex-direction:column;align-items:center;justify-content:center;touch-action:none;overscroll-behavior:contain;-webkit-user-select:none;user-select:none}
-.lightbox-image{display:block;max-width:92vw;max-height:82vh;width:auto;height:auto;object-fit:contain;-webkit-user-drag:none;user-select:none;pointer-events:none}
-.lightbox figcaption{width:min(92vw,1200px);margin-top:14px;display:flex;justify-content:space-between;gap:20px;color:#2b2a28;font-size:10px;letter-spacing:.12em;text-transform:uppercase}
+.lightbox-stage{width:100%;height:100%;margin:0;display:flex;flex-direction:column;align-items:center;justify-content:center;touch-action:none;overscroll-behavior:contain;-webkit-user-select:none;user-select:none;cursor:grab}
+.lightbox-image{display:block;max-width:96vw;max-height:88vh;width:auto;height:auto;object-fit:contain;-webkit-user-drag:none;user-select:none;pointer-events:none}
+.lightbox figcaption{width:min(96vw,1500px);margin-top:10px;display:flex;justify-content:space-between;gap:20px;color:#2b2a28;font-size:9px;letter-spacing:.12em;text-transform:uppercase}
 .lightbox-close,.lightbox-arrow{position:fixed;z-index:1001;border:0;background:transparent;color:#2b2a28;display:flex;align-items:center;justify-content:center;cursor:pointer;font-family:inherit;font-weight:200}
 .lightbox-close{top:calc(8px + env(safe-area-inset-top));right:12px;font-size:32px;width:44px;height:44px}
-.lightbox-arrow{top:50%;transform:translateY(-50%);font-size:30px;width:52px;height:72px}
+.lightbox-arrow{top:50%;transform:translateY(-50%);font-size:28px;width:46px;height:64px}
 .lightbox-arrow.prev{left:6px}.lightbox-arrow.next{right:6px}
 .lightbox-arrow.disabled,.lightbox-arrow:disabled{opacity:.18;cursor:default}
 
@@ -80,11 +80,15 @@ footer{display:flex;justify-content:space-between;width:90vw;margin:0 auto;paddi
   .menu-toggle{display:flex}
   .mobile-menu{top:64px}
   .instagram-link{width:58px;height:58px;right:20px;bottom:calc(20px + env(safe-area-inset-bottom))}
-  .lightbox{padding:calc(18px + env(safe-area-inset-top)) 18px calc(18px + env(safe-area-inset-bottom))}
-  .lightbox-stage{width:100vw;height:100%;padding:0 22px}
-  .lightbox-image{max-width:calc(100vw - 44px);max-height:78vh}
-  .lightbox figcaption{width:calc(100vw - 44px);font-size:9px}
+  .lightbox{padding:calc(12px + env(safe-area-inset-top)) 10px calc(12px + env(safe-area-inset-bottom))}
+  .lightbox-stage{width:100vw;height:100%;padding:0 12px;cursor:default}
+  .lightbox-image{max-width:calc(100vw - 24px);max-height:84vh}
+  .lightbox figcaption{width:calc(100vw - 24px);font-size:8.5px}
   .lightbox-arrow{font-size:24px;width:36px;height:60px}
   .lightbox-arrow.prev{left:0}.lightbox-arrow.next{right:0}
   .lightbox-close{right:6px}
+}
+
+@media(min-width:721px){
+  .lightbox-stage.dragging{cursor:grabbing}
 }

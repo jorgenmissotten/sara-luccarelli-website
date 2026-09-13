@@ -162,6 +162,68 @@ document.addEventListener("DOMContentLoaded", () => {
     horizontalGesture = false;
   }, { passive: true });
 
+
+
+  // Laptop/desktop navigation: horizontal two-finger trackpad swipe
+  // and click-drag with a mouse. Arrow keys and on-screen arrows keep working.
+  let wheelAccum = 0;
+  let wheelTimer = null;
+  let wheelLocked = false;
+
+  stage.addEventListener("wheel", (event) => {
+    if (!lightbox.classList.contains("open")) return;
+    if (Math.abs(event.deltaX) <= Math.abs(event.deltaY)) return;
+
+    event.preventDefault();
+    if (wheelLocked) return;
+
+    wheelAccum += event.deltaX;
+    clearTimeout(wheelTimer);
+    wheelTimer = setTimeout(() => { wheelAccum = 0; }, 180);
+
+    if (Math.abs(wheelAccum) >= 55) {
+      if (wheelAccum > 0) nextPhoto();
+      else previousPhoto();
+      wheelAccum = 0;
+      wheelLocked = true;
+      setTimeout(() => { wheelLocked = false; }, 420);
+    }
+  }, { passive: false });
+
+  let mouseDragging = false;
+  let mouseStartX = 0;
+  let mouseLastX = 0;
+
+  stage.addEventListener("mousedown", (event) => {
+    if (event.button !== 0) return;
+    mouseDragging = true;
+    mouseStartX = event.clientX;
+    mouseLastX = event.clientX;
+    stage.classList.add("dragging");
+    event.preventDefault();
+  });
+
+  stage.addEventListener("mousemove", (event) => {
+    if (!mouseDragging) return;
+    mouseLastX = event.clientX;
+  });
+
+  function finishMouseDrag() {
+    if (!mouseDragging) return;
+    const dx = mouseLastX - mouseStartX;
+    mouseDragging = false;
+    stage.classList.remove("dragging");
+
+    if (Math.abs(dx) >= 60) {
+      if (dx < 0) nextPhoto();
+      else previousPhoto();
+    }
+  }
+
+  stage.addEventListener("mouseup", finishMouseDrag);
+  stage.addEventListener("mouseleave", finishMouseDrag);
+
+
   // Close the mobile menu after choosing a destination.
   document.querySelectorAll(".mobile-menu a").forEach(link => {
     link.addEventListener("click", () => {
