@@ -12,8 +12,12 @@
   <a class="brand" href="#home">SARA LUCCARELLI</a>
   <input class="menu-check" type="checkbox" id="menu-check" aria-hidden="true">
   <div class="menu-toggle">
-    <label class="menu-label" for="menu-check">MENU</label>
-    <label class="close-label" for="menu-check">CLOSE</label>
+    <label class="menu-label" for="menu-check" aria-label="Open menu">
+      <span class="hamburger-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+    </label>
+    <label class="close-label" for="menu-check" aria-label="Close menu">
+      <span class="close-icon" aria-hidden="true">×</span>
+    </label>
   </div>
   <nav class="mobile-menu" id="mobile-menu" aria-label="Main navigation">
     <a href="#home">HOME</a>
