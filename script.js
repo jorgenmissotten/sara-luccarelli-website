@@ -164,64 +164,80 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-  // Laptop/desktop navigation: horizontal two-finger trackpad swipe
-  // and click-drag with a mouse. Arrow keys and on-screen arrows keep working.
+  // Laptop/desktop navigation.
+  // Works with horizontal trackpad gestures, vertical two-finger gestures while
+  // the pointer is over the photo viewer, and click-drag with a mouse.
   let wheelAccum = 0;
   let wheelTimer = null;
   let wheelLocked = false;
 
   stage.addEventListener("wheel", (event) => {
     if (!lightbox.classList.contains("open")) return;
-    if (Math.abs(event.deltaX) <= Math.abs(event.deltaY)) return;
 
+    // On Mac trackpads browsers can report a horizontal swipe as deltaX or,
+    // depending on the gesture/browser, mainly as deltaY. In a fullscreen
+    // lightbox we can safely use the dominant axis for photo navigation.
+    const dominantDelta = Math.abs(event.deltaX) >= Math.abs(event.deltaY)
+      ? event.deltaX
+      : event.deltaY;
+
+    if (Math.abs(dominantDelta) < 1) return;
     event.preventDefault();
     if (wheelLocked) return;
 
-    wheelAccum += event.deltaX;
+    wheelAccum += dominantDelta;
     clearTimeout(wheelTimer);
-    wheelTimer = setTimeout(() => { wheelAccum = 0; }, 180);
+    wheelTimer = setTimeout(() => { wheelAccum = 0; }, 220);
 
-    if (Math.abs(wheelAccum) >= 55) {
+    if (Math.abs(wheelAccum) >= 40) {
       if (wheelAccum > 0) nextPhoto();
       else previousPhoto();
       wheelAccum = 0;
       wheelLocked = true;
-      setTimeout(() => { wheelLocked = false; }, 420);
+      setTimeout(() => { wheelLocked = false; }, 350);
     }
   }, { passive: false });
 
-  let mouseDragging = false;
-  let mouseStartX = 0;
-  let mouseLastX = 0;
+  // Pointer events cover mouse dragging and compatible trackpads/pens.
+  let pointerDragging = false;
+  let pointerId = null;
+  let pointerStartX = 0;
+  let pointerLastX = 0;
 
-  stage.addEventListener("mousedown", (event) => {
+  stage.addEventListener("pointerdown", (event) => {
+    if (event.pointerType === "touch") return; // touch has dedicated logic above
     if (event.button !== 0) return;
-    mouseDragging = true;
-    mouseStartX = event.clientX;
-    mouseLastX = event.clientX;
+    pointerDragging = true;
+    pointerId = event.pointerId;
+    pointerStartX = event.clientX;
+    pointerLastX = event.clientX;
+    stage.setPointerCapture?.(pointerId);
     stage.classList.add("dragging");
     event.preventDefault();
   });
 
-  stage.addEventListener("mousemove", (event) => {
-    if (!mouseDragging) return;
-    mouseLastX = event.clientX;
+  stage.addEventListener("pointermove", (event) => {
+    if (!pointerDragging || event.pointerId !== pointerId) return;
+    pointerLastX = event.clientX;
   });
 
-  function finishMouseDrag() {
-    if (!mouseDragging) return;
-    const dx = mouseLastX - mouseStartX;
-    mouseDragging = false;
+  function finishPointerDrag(event) {
+    if (!pointerDragging) return;
+    if (event && event.pointerId !== pointerId) return;
+    const dx = pointerLastX - pointerStartX;
+    pointerDragging = false;
     stage.classList.remove("dragging");
+    try { stage.releasePointerCapture?.(pointerId); } catch (_) {}
+    pointerId = null;
 
-    if (Math.abs(dx) >= 60) {
+    if (Math.abs(dx) >= 45) {
       if (dx < 0) nextPhoto();
       else previousPhoto();
     }
   }
 
-  stage.addEventListener("mouseup", finishMouseDrag);
-  stage.addEventListener("mouseleave", finishMouseDrag);
+  stage.addEventListener("pointerup", finishPointerDrag);
+  stage.addEventListener("pointercancel", finishPointerDrag);
 
 
   // Close the mobile menu after choosing a destination.
