@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Sara Luccarelli — photography portfolio.">
+<title>Sara Luccarelli — Photography</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="#home">SARA LUCCARELLI</a>
+  <input class="menu-check" type="checkbox" id="menu-check" aria-hidden="true">
+  <div class="menu-toggle">
+    <label class="menu-label" for="menu-check">MENU</label>
+    <label class="close-label" for="menu-check">CLOSE</label>
+  </div>
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Main navigation">
+    <a href="#home">HOME</a>
+    <a href="#about">ABOUT</a>
+    <a href="#work">WORK</a>
+    <a href="#contact">CONTACT</a>
+  </nav>
+</header>
+
+<main>
+  <section id="home" class="hero">
+    <img src="images/home.jpg" alt="Sara Luccarelli photography installation in a contemporary gallery">
+  </section>
+
+  <section id="about" class="section about-section">
+    <div class="about-image">
+      <img src="images/profile.jpg" alt="Portrait of Sara Luccarelli" loading="lazy">
+    </div>
+    <div class="about-copy">
+      <p class="eyebrow">ABOUT</p>
+      <h1>Sara Luccarelli</h1>
+      <p class="about-lead">Sara Luccarelli is a contemporary photographer who lives and works in Strasbourg. Her work explores minimalist, architectural and poetic forms. Her visual language is defined by clean lines, geometric compositions and a fascination with subtle details.</p>
+      <p class="about-body">Her photographs often focus on architecture and urban environments, reducing spaces to their essential forms. Through carefully considered perspectives, framing and depth, she transforms ordinary structures into graphic compositions.</p>
+      <p class="about-body">Colour and shape play an important role in her work. Strong contrasts, monochromatic surfaces and vivid blocks of colour create images that often feel more abstract and painterly than documentary.</p>
+      <p class="about-body">Rather than telling literal stories, Sara is interested in fragments, textures, reflections, shadows and unexpected details. These isolated elements invite the viewer to look again and to experience a place through atmosphere, rhythm and visual sensation.</p>
+    </div>
+  </section>
+
+  <section id="work" class="section work-section">
+    <div class="section-heading">
+      <p class="eyebrow">WORK</p>
+    </div>
+    <div class="work-grid" id="work-grid"></div>
+  </section>
+
+  <section id="contact" class="section contact-section">
+    <div>
+      <p class="eyebrow">CONTACT</p>
+      <h1>Get in touch.</h1>
+      <a href="mailto:hello@saraluccarelli.com" style="display:inline-block;margin-top:2px;color:#77736d;text-decoration:none;font-size:13px;line-height:1.5;letter-spacing:.04em;">hello@saraluccarelli.com</a>
+    </div>
+  </section>
+</main>
+
+<footer><span>© 2026 Sara Luccarelli</span><span>Photography</span></footer>
+
+<div id="lightboxes"></div>
+
+<a class="instagram-link" href="https://www.instagram.com/luccarellisara/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <rect x="3" y="3" width="18" height="18" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="1.7"/>
+    <circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.7"/>
+    <circle cx="17.4" cy="6.7" r="1.1" fill="currentColor"/>
+  </svg>
+</a>
+
+<script src="portfolio.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
