@@ -6,16 +6,19 @@ const portfolio = [
     "images": [
       "images/wall-stories/01.jpeg",
       "images/wall-stories/02.jpeg",
-      "images/wall-stories/03.jpeg",
       "images/wall-stories/04.jpeg",
-      "images/wall-stories/05.jpeg",
       "images/wall-stories/06.jpeg",
-      "images/wall-stories/07.jpeg",
       "images/wall-stories/08.jpeg",
       "images/wall-stories/09.jpeg",
       "images/wall-stories/10.jpeg",
       "images/wall-stories/11.jpeg",
-      "images/wall-stories/12.jpeg"
+      "images/wall-stories/12.jpeg",
+      "images/wall-stories/13.jpg",
+      "images/wall-stories/14.jpg",
+      "images/wall-stories/15.jpg",
+      "images/wall-stories/16.jpg",
+      "images/wall-stories/17.jpg",
+      "images/wall-stories/18.jpg"
     ]
   },
   {
@@ -39,8 +42,7 @@ const portfolio = [
       "images/colours/14.jpeg",
       "images/colours/15.jpeg",
       "images/colours/16.jpeg",
-      "images/colours/17.jpeg",
-      "images/colours/18.jpeg"
+      "images/colours/17.jpeg"
     ]
   },
   {
@@ -77,7 +79,10 @@ const portfolio = [
       "images/sky-cutouts/11.jpeg",
       "images/sky-cutouts/12.jpeg",
       "images/sky-cutouts/13.jpeg",
-      "images/sky-cutouts/14.jpeg"
+      "images/sky-cutouts/14.jpeg",
+      "images/sky-cutouts/15.jpg",
+      "images/sky-cutouts/16.jpg",
+      "images/sky-cutouts/17.jpg"
     ]
   },
   {
@@ -104,7 +109,9 @@ const portfolio = [
       "images/reflections/02.jpeg",
       "images/reflections/03.jpeg",
       "images/reflections/04.jpeg",
-      "images/reflections/05.jpeg"
+      "images/reflections/05.jpeg",
+      "images/reflections/06.jpg",
+      "images/reflections/07.jpg"
     ]
   }
 ];
